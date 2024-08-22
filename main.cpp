@@ -131,6 +131,36 @@ showRecord(MYSQL* conn){
 	Sleep(7000);
 }
 
+// Search data Function 
+
+void search(MYSQL* conn){
+	int id;
+	cout<<"Enter Student ID: ";
+	cin>>id;
+	
+	stringstream ss;
+	ss<<id;
+	string sId = ss.str();
+	string show = "SELECT * FROM student WHERE Id = '"+sId+"' ";
+	if(mysql_query(conn, show.c_str())){
+		cout<<"Error: "<<mysql_error(conn)<<endl;
+	}
+	else{
+		MYSQL_RES* res;
+		res = mysql_store_result(conn);
+		if(res){
+			MYSQL_ROW row = mysql_fetch_row(res);
+		if(row){
+			int num = mysql_num_fields(res);
+			for(int i=0; i<num; i++){
+				cout<<" "<<row[i];
+			}
+		}
+		mysql_free_result(res);
+	}
+}
+ Sleep(5000);
+}
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
@@ -172,7 +202,7 @@ int main(int argc, char** argv) {
 			showRecord(conn);
 		}
 		else if(val==3){
-			showRecord(conn);
+			search(conn);
 		}		
 		else if(val==4){
 			showRecord(conn);
