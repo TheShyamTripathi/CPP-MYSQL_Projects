@@ -162,6 +162,55 @@ void search(MYSQL* conn){
  Sleep(5000);
 }
 
+// Data updation function 
+update(MYSQL* conn, University u){
+	int id;
+	cout<<"Enter Id: ";
+	cin>> id;
+	
+	int iId = u.getId();
+	stringstream ss;
+	ss<<id;
+	string sId = ss.str();
+	
+	string subject;
+	cout<<"Enter New Subjects: ";
+	cin>> subject;
+	u.setSubject(subject);
+	
+	string upd = "UPDATE student SET Subject = '"+u.getSubject()+"' WHERE Id ='"+sId+"'";
+	if(mysql_query(conn,upd.c_str())){
+cout<<"Error: "<<mysql_error(conn)<<endl;
+}
+
+else{
+ cout<<"Data Updated Successfuly"<<endl;
+}
+Sleep(3000);
+}
+
+// Function to delete the data of student 
+deleteS(MYSQL* conn){
+	int id;
+	cout <<"Enter student ID: ";
+	cin>>id;
+	
+	stringstream ss;
+	ss<<id;
+	string sId = ss.str();
+	
+	string del = "DELETE FROM student WHERE Id = '"+sId+"'";
+	 if(mysql_query(conn,del.c_str())){
+cout<<"Error: "<<mysql_error(conn)<<endl;
+}
+
+else{
+ cout<<"Data Delted Successfuly"<<endl;
+}
+Sleep(3000);
+}
+
+
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 int main(int argc, char** argv) {
@@ -205,10 +254,10 @@ int main(int argc, char** argv) {
 			search(conn);
 		}		
 		else if(val==4){
-			showRecord(conn);
+			update(conn,u);
 		}
 		else if(val==5){
-			showRecord(conn);
+			deleteS(conn);
 		}
 		else{
 			showRecord(conn);
