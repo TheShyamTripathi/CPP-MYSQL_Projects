@@ -102,6 +102,36 @@ void insert(MYSQL* conn, University u) {
     
     Sleep(4000);  // Pause for 4 seconds (Windows-specific)
 }
+
+// Show Student data Function
+
+showRecord(MYSQL* conn){
+	string show= "SELECT * FROM student";
+	
+	if(mysql_query(conn,show.c_str())){
+		cout<<"Error: "<<mysql_error(conn)<<endl;
+	}
+	else{
+		MYSQL_RES* res;
+		res = mysql_store_result(conn); // res = result 
+		if(res){
+			int num = mysql_num_fields(res);
+			MYSQL_ROW row;
+			int i;
+			while(row= mysql_fetch_row(res)){
+				
+				for(i=0; i<num; i++){
+					cout<<" "<<row[i];
+				}
+				cout<<endl;
+			}
+		}
+	}
+	
+	Sleep(7000);
+}
+
+
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 int main(int argc, char** argv) {
@@ -137,6 +167,21 @@ int main(int argc, char** argv) {
 		cout<< endl;
 		if(val==1){
 			insert(conn,u);
+		}
+		else if(val==2){
+			showRecord(conn);
+		}
+		else if(val==3){
+			showRecord(conn);
+		}		
+		else if(val==4){
+			showRecord(conn);
+		}
+		else if(val==5){
+			showRecord(conn);
+		}
+		else{
+			showRecord(conn);
 		}
 
 	}
