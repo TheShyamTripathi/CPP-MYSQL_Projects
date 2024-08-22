@@ -259,8 +259,14 @@ int main(int argc, char** argv) {
 		else if(val==5){
 			deleteS(conn);
 		}
+		else if (val==0){
+			exit = true;
+			cout<<"Good Day!"<<endl;
+			Sleep(3000);
+		}
 		else{
-			showRecord(conn);
+			cout<<"Invalid Input"<<endl;
+			Sleep(2000);
 		}
 
 	}
