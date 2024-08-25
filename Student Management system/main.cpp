@@ -8,8 +8,8 @@ using namespace std;
 
 const char* HOST = "localhost";
 const char* USER = "root";
-const char* PW = "your_password";
-const char* DB = "my-cpp";
+const char* PW = "PASSOWRD";
+const char* DB = "my_cpp";
 
 class University {
     private:
