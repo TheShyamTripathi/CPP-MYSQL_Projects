@@ -8,7 +8,7 @@ using namespace std;
 
 const char* HOST = "localhost";
 const char* USER = "root";
-const char* PW = "PASSOWRD";
+const char* PW = "Shyamsql@123";
 const char* DB = "my_cpp";
 
 class University {

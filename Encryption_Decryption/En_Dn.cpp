@@ -8,7 +8,7 @@ using namespace std;
 // Constants for MySQL connection
 const char* HOST = "localhost";
 const char* USER = "root";
-const char* PW = "your password";
+const char* PW = "Shyamsql@123";
 const char* DB = "my_cpp";
 
 // Class to handle user login
